@@ -2,9 +2,10 @@
   "name": "shv_api",
   "version": "1.0.0",
   "description": "",
-  type:"modules",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,6 +16,8 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "helmet": "^5.1.0",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.5",
