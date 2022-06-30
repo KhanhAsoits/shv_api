@@ -15,8 +15,7 @@ import {_Category} from "./src/api/v1/category/category.model.js";
 import {_Tag} from "./src/api/v1/tag/tag.model.js";
 import {_User} from "./src/api/v1/user/user.model.js";
 import {_Book} from "./src/api/v1/book/book.model.js";
-import server_request from './server_request.json' assert {type: 'json'}
-import fs from 'fs'
+import {server_request} from './server_request.js'
 
 export const server = {
     version: api_app.__current_version,
@@ -86,10 +85,6 @@ export const server = {
                 console.log('db connected')
                 if (server_request.count === 0) {
                     this.init_collection()
-                    let request_config = {count: 1}
-                    fs.writeFile(
-                        path.join(path.resolve(), 'server_request.json'), JSON.stringify(request_config),{}, (err) => console.log(err)
-                    )
                 }
                 this.app.listen(this.PORT, () => {
                     console.log('Server is running on port : ', this.PORT)

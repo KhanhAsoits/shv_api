@@ -113,9 +113,9 @@ export const create = async (req, res, next) => {
         if (!hasExit) {
             let new_user = await _User?.create_new_user({name, email, password})
             let return_user = {...new_user?._doc, accessToken: ''}
-            res.send(return_wrapper({status: true, msg: 'Create success!', data: return_user, links: api_links}))
+            res.send(return_wrapper({status: true, msg: 'Đăng ký thành công!', data: return_user, links: api_links}))
         } else {
-            next(createError(400, 'Email has taken!'))
+            res.send(return_wrapper({status: false , msg: 'Email đã được đăng ký!', data: [],links: api_links}))
         }
     } catch (e) {
         return next(createError(400, return_wrapper({

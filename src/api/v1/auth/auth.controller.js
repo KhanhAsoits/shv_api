@@ -1,4 +1,4 @@
-import createError from "http-errors";
+﻿import createError from "http-errors";
 import {_User} from "../user/user.model.js";
 import {api_app} from "../../../config/app.config.js";
 import jwt from "jsonwebtoken";
@@ -26,7 +26,7 @@ export const get_token = async (req, res, next) => {
                     res.send(return_wrapper({
                         status: true,
                         msg: 'get access token success!',
-                        data: {access_token: user.accessToken},
+                        data: {access_token: user.accessToken,userId:user._id},
                         links: api_links
                     }))
                 } else {
