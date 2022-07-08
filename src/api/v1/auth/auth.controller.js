@@ -20,6 +20,7 @@ export const get_token = async (req, res, next) => {
     if (email && password) {
         try {
             let user = await _User.find_by_email(email)
+            console.log(user)
             if (user) {
                 let decode_pass = jwt.verify(user.password, api_app.__secret_key)
                 if (decode_pass.password === password) {
@@ -30,7 +31,7 @@ export const get_token = async (req, res, next) => {
                         links: api_links
                     }))
                 } else {
-                    res.send(return_wrapper({status: false, msg: 'Mật khẩu không đúng!', data: [], links: api_links}))
+                    res.send(return_wrapper({status: false, msg: 'Mật khẩu không đúng hoặc không có quyền truy cập!', data: [], links: api_links}))
                 }
             } else {
                 return res.send(return_wrapper({

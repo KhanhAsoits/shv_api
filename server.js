@@ -16,6 +16,7 @@ import {_Tag} from "./src/api/v1/tag/tag.model.js";
 import {_User} from "./src/api/v1/user/user.model.js";
 import {_Book} from "./src/api/v1/book/book.model.js";
 import {server_request} from './server_request.js'
+import bookRoutes from "./src/api/v1/book/book.routes.js";
 
 export const server = {
     version: api_app.__current_version,
@@ -58,6 +59,7 @@ export const server = {
         // config all verify route here
         this.app.use(`/${api_app.__current_version}/users`, UserRoutes)
         this.app.use(`/${api_app.__current_version}/auth`, AuthRoutes)
+        this.app.use(`/${api_app.__current_version}/books`, bookRoutes)
     },
     connect_err_routes: async function () {
         this.app.use((req, res, next) => {
