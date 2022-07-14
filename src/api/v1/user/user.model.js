@@ -16,7 +16,7 @@ const UserModel = new Schema({
 }, {timestamps: true})
 //register method
 UserModel.statics.get_access_token = async function (token) {
-    let user = await this.find({accessToken: token, role: 2}).exec()
+    let user = await this.find({accessToken: token}).exec()
     return user.length > 0 ? user[0]?.accessToken : ''
 }
 UserModel.statics.find_books_by_user = async function (id) {
